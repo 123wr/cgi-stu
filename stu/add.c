@@ -12,9 +12,17 @@ int cgiMain()
 	char name[32] = "\0";
 	char age[16] = "\0";
 	char stuId[32] = "\0";
+	char sex[4] = "\0";
 	int status = 0;
 
 	status = cgiFormString("name",  name, 32);
+	if (status != cgiFormSuccess)
+	{
+		fprintf(cgiOut, "get name error!\n");
+		return 1;
+	}
+
+	status = cgiFormString("sex",  sex, 4);
 	if (status != cgiFormSuccess)
 	{
 		fprintf(cgiOut, "get name error!\n");
@@ -60,7 +68,7 @@ int cgiMain()
 
 
 
-	strcpy(sql, "create table stu(id int not null primary key, name varchar(20) not null, age int not null)");
+	strcpy(sql, "create table stu(id int not null primary key, name varchar(20) not null, age int not null,sex char(4) not null)");
 	if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
 	{
 		if (ret != 1)
@@ -73,7 +81,7 @@ int cgiMain()
 
 
 
-	sprintf(sql, "insert into stu values(%d, '%s', %d)", atoi(stuId), name, atoi(age));
+	sprintf(sql, "insert into stu values(%d, '%s', %d,'%s')", atoi(stuId), name, atoi(age),sex);
 	if (mysql_real_query(db, sql, strlen(sql) + 1) != 0)
 	{
 		fprintf(cgiOut, "%s\n", mysql_error(db));
