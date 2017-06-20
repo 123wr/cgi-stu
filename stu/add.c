@@ -4,16 +4,32 @@
 #include <mysql/mysql.h>
 #include "cgic.h"
 
+char * headname = "head.html";
+char * footname = "footer.html";
+
 int cgiMain()
 {
+	FILE * fd;
 
 	fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
 
-	char name[32] = "\0";
+	char name[9] = "\0";
 	char age[16] = "\0";
 	char stuId[32] = "\0";
 	char sex[4] = "\0";
+	char ch;
 	int status = 0;
+
+	if(!(fd = fopen(headname,"r"))){
+		fprintf(cgiOut,"Cannot open file, %s\n",headname);
+		return -1;
+	}
+	ch =fgetc(fd);
+
+	while(ch != EOF){
+		fprintf(cgiOut, "%c", ch);
+	}
+	fclose(fd);
 
 	status = cgiFormString("name",  name, 32);
 	if (status != cgiFormSuccess)
@@ -65,9 +81,7 @@ int cgiMain()
 		mysql_close(db);
 		return -1;
 	}
-
-
-
+	
 	strcpy(sql, "create table stu(id int not null primary key, name varchar(20) not null, age int not null,sex char(4) not null)");
 	if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
 	{
