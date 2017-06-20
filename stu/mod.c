@@ -9,13 +9,13 @@ int cgiMain()
 
 	fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
 
-	char name[32] = "\0";
-	char age[16] = "\0";
-	char stuId[32] = "\0";
+	char name[9] = "\0";
+	char age[9] = "\0";
+	char stuId[9] = "\0";
 	char sex[4] = "\0";
 	int status = 0;
 
-	status = cgiFormString("name",  name, 32);
+	status = cgiFormString("name",  name, 9);
 	if (status != cgiFormSuccess)
 	{
 		fprintf(cgiOut, "get name error!\n");
@@ -29,14 +29,14 @@ int cgiMain()
 		return 1;
 	}
 
-	status = cgiFormString("age",  age, 16);
+	status = cgiFormString("age",  age, 9);
 	if (status != cgiFormSuccess)
 	{
 		fprintf(cgiOut, "get age error!\n");
 		return 1;
 	}
 
-	status = cgiFormString("stuId",  stuId, 32);
+	status = cgiFormString("stuId",  stuId, 9);
 	if (status != cgiFormSuccess)
 	{
 		fprintf(cgiOut, "get stuId error!\n");

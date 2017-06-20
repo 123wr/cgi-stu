@@ -9,11 +9,11 @@ int cgiMain()
 
 	fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
 
-	char stuId[32] = "\0";
+	char stuId[9] = "\0";
 	int status = 0;
 
 
-	status = cgiFormString("stuId",  stuId, 32);
+	status = cgiFormString("stuId",  stuId, 9);
 	if (status != cgiFormSuccess)
 	{
 		fprintf(cgiOut, "get stuId error!\n");
