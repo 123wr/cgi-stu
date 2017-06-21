@@ -10,18 +10,18 @@ char * footname = "footer.html";
 int cgiMain()
 {
 
-	//FILE * fd;
+	FILE * fd;
 
 	char ino[9] = "\0";
 	char iname[9] = "\0";
 	char sex[4] = "\0";
 	char age[4] = "\0";
 	char sid[9] = "\0";
-	//char ch;
+	char ch;
 	int status = 0;
 
   fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
-	/*if(!(fd = fopen(headname,"r"))){
+	if(!(fd = fopen(headname,"r"))){
 		fprintf(cgiOut,"Cannot open file, %s\n",headname);
 		return -1;
 	}
@@ -30,7 +30,7 @@ int cgiMain()
 	while(ch != EOF){
 		fprintf(cgiOut, "%c", ch);
 	}
-	fclose(fd);*/
+	fclose(fd);
 
 	status = cgiFormString("ino",  ino, 9);
 	if (status != cgiFormSuccess)
