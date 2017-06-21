@@ -10,7 +10,7 @@ int cgiMain()
 	fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
 
   char sno[9] = "\0";
-	char cn0[9] = "\0";
+	char cno[9] = "\0";
 	char grade[4] ="\0";
 
 	int status = 0;

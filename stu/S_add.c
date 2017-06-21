@@ -8,7 +8,7 @@ int cgiMain()
 {
 
 	char sno[9] = "\0";
-	char cn0[9] = "\0";
+	char cno[9] = "\0";
 	char grade[4] ="\0";
 
 	int status = 0;
@@ -22,7 +22,7 @@ int cgiMain()
 		return 1;
 	}
 
-	status = cgiFormString("cno",  cno, 9);
+	status = cgiFormString("cno", cno, 9);
 	if (status != cgiFormSuccess)
 	{
 		fprintf(cgiOut, "get cno error!\n");
