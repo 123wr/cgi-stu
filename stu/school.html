@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>成绩管理系统</title>
+    <title>学院信息管理系统</title>
     <link rel="stylesheet" type="text/css" href="./public/css/bootstrap.min.css">
     <style type="text/css">
     body {
@@ -38,41 +38,35 @@
 </head>
 
 <body>
-    <h1 class="header text-center">成绩管理系统</h1>
+    <h1 class="header text-center">学院信息管理系统</h1>
     <div class="container">
         <div class="operation row">
             <div class="text-center col-md-3 col-sm-6">
-                <button>添加成绩</button>
+                <button>添加学院信息</button>
             </div>
             <div class="text-center col-md-3 col-sm-6">
-                <button>查询成绩</button>
+                <button>查询学院信息</button>
             </div>
             <div class="text-center col-md-3 col-sm-6">
-                <button>修改成绩</button>
+                <button>修改学院信息</button>
             </div>
             <div class="text-center col-md-3 col-sm-6">
-                <button>删除成绩</button>
+                <button>删除课程信息</button>
             </div>
         </div>
         <ul class="forms">
             <li class="show">
-                <form class="form-horizontal" method="get" action="/cgi-bin/sx/S_add.cgi">
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/SC_add.cgi">
                     <div class="form-group">
-                        <label for="sno" class="col-sm-2 control-label">学号</label>
+                        <label for="sid" class="col-sm-2 control-label">学院编号</label>
                         <div class="col-sm-10">
-                            <input type="text" name="sno" class="form-control" id="sno" placeholder="请输入学号">
+                            <input type="text" name="sid" class="form-control" id="sid" placeholder="请输入学院编号">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="cno" class="col-sm-2 control-label">课程号</label>
+                        <label for="dept" class="col-sm-2 control-label">学院名</label>
                         <div class="col-sm-10">
-                            <input type="text" name="cno" class="form-control" id="cno" placeholder="请输入课程号">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="grade" class="col-sm-2 control-label">成绩</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="grade" class="form-control" id="grade" placeholder="请输入学生成绩">
+                            <input type="text" name="dept" class="form-control" id="dept" placeholder="请输入学院名">
                         </div>
                     </div>
                     <div class="text-center">
@@ -82,11 +76,11 @@
                 </form>
             </li>
             <li>
-                <form class="form-horizontal" method="get" action="/cgi-bin/sx/S_sel.cgi">
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/SC_sel.cgi">
                     <div class="form-group">
-                        <label for="sno-sel" class="col-sm-2 control-label">输入学号</label>
+                        <label for="sid-sel" class="col-sm-2 control-label">输入学院编号查询</label>
                         <div class="col-sm-10">
-                            <input type="text" name="sno" class="form-control" id="sno-sel" placeholder="输入*查询所有">
+                            <input type="text" name="sid" class="form-control" id="sid-sel" placeholder="输入*查询所有">
                         </div>
                     </div>
                     <div class="text-center">
@@ -96,23 +90,17 @@
                 </form>
             </li>
             <li>
-                <form class="form-horizontal" method="get" action="/cgi-bin/sx/C_mod.cgi">
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/SC_mod.cgi">
                     <div class="form-group">
-                        <label for="sno-mod" class="col-sm-2 control-label">学号</label>
+                        <label for="sid-mod" class="col-sm-2 control-label">学院编号</label>
                         <div class="col-sm-10">
-                            <input type="text" name="sno" class="form-control" id="sno-mod" placeholder="请输入学号">
+                            <input type="text" name="sid" class="form-control" id="sid-mod" placeholder="请输入学院编号">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="cno-mod" class="col-sm-2 control-label">课程郝</label>
+                        <label for="dept-mod" class="col-sm-2 control-label">学院名</label>
                         <div class="col-sm-10">
-                            <input type="text" name="cno" class="form-control" id="cno-mod" placeholder="请输入课程号">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="grade-mod" class="col-sm-2 control-label">成绩</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="grade" class="form-control" id="grade-mod" placeholder="请输入学生成绩">
+                            <input type="text" name="dept" class="form-control" id="dept-mod" placeholder="请输入学院名">
                         </div>
                     </div>
                     <div class="text-center">
@@ -122,17 +110,11 @@
                 </form>
             </li>
             <li>
-                <form class="form-horizontal" method="get" action="/cgi-bin/sx/S_del.cgi">
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/SC_del.cgi">
                     <div class="form-group">
-                        <label for="sno-del" class="col-sm-2 control-label">输入要删除的学生学号</label>
+                        <label for="sid-del" class="col-sm-2 control-label">输入要删除的学院编号</label>
                         <div class="col-sm-10">
-                            <input type="text" name="sno" class="form-control" id="sno-del" placeholder="输入学号">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="cno-del" class="col-sm-2 control-label">输入要删除的学生所选课程号</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="cno" class="form-control" id="cno-del" placeholder="输入课程号">
+                            <input type="text" name="sid" class="form-control" id="sid-del" placeholder="输入学院编号">
                         </div>
                     </div>
                     <div class="text-center">
