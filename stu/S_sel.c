@@ -15,13 +15,13 @@ int cgiMain()
 		    <link rel=\"stylesheet\" href=\"/stu/public/css/bootstrap.min.css\">\
 		</head>");
 
-	char cname[9] = "\0";
+	char sno[9] = "\0";
 	int status = 0;
 
-	status = cgiFormString("cname",  cname, 9);
+	status = cgiFormString("sno",  sno, 9);
 	if (status != cgiFormSuccess)
 	{
-		fprintf(cgiOut, "get cname error!\n");
+		fprintf(cgiOut, "get sno error!\n");
 		return 1;
 	}
 
@@ -31,11 +31,11 @@ int cgiMain()
 
 	if (cname[0] == '*')
 	{
-		sprintf(sql, "select * from Course");
+		sprintf(sql, "select * from Score");
 	}
 	else
 	{
-		sprintf(sql, "select * from Course where cname = '%s'", cname);
+		sprintf(sql, "select * from Score where sno = %d ", sno);
 	}
 
 
