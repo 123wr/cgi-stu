@@ -56,17 +56,23 @@
         </div>
         <ul class="forms">
             <li class="show">
-                <form class="form-horizontal" method="get" action="/cgi-bin/sx/add.cgi">
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/I_add.cgi">
                     <div class="form-group">
-                        <label for="stuId" class="col-sm-2 control-label">学生学号</label>
+                        <label for="ino" class="col-sm-2 control-label">学生学号</label>
                         <div class="col-sm-10">
-                            <input type="text" name="stuId" class="form-control" id="stuId" placeholder="请输入学生学号">
+                            <input type="text" name="ino" class="form-control" id="ino" placeholder="请输入学生学号">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">学生姓名</label>
+                        <label for="iname" class="col-sm-2 control-label">学生姓名</label>
                         <div class="col-sm-10">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="请输入学生姓名">
+                            <input type="text" name="iname" class="form-control" id="iname" placeholder="请输入学生姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="age" class="col-sm-2 control-label">学生性别</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="sex" class="form-control" id="sex" placeholder="请输入学生性别">
                         </div>
                     </div>
                     <div class="form-group">
@@ -76,9 +82,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="age" class="col-sm-2 control-label">学生性别</label>
+                        <label for="sid" class="col-sm-2 control-label">学院编号</label>
                         <div class="col-sm-10">
-                            <input type="text" name="sex" class="form-control" id="sex" placeholder="请输入学生性别">
+                            <input type="text" name="sid" class="form-control" id="sid" placeholder="请输入学生所属学院编号">
                         </div>
                     </div>
                     <div class="text-center">
@@ -88,11 +94,11 @@
                 </form>
             </li>
             <li>
-                <form class="form-horizontal" method="get" action="/cgi-bin/sx/sel.cgi">
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/I_sel.cgi">
                     <div class="form-group">
-                        <label for="name-sel" class="col-sm-2 control-label">输入姓名查询</label>
+                        <label for="iname-sel" class="col-sm-2 control-label">输入姓名查询</label>
                         <div class="col-sm-10">
-                            <input type="text" name="name" class="form-control" id="name-sel" placeholder="输入*查询所有">
+                            <input type="text" name="iname" class="form-control" id="iname-sel" placeholder="输入*查询所有">
                         </div>
                     </div>
                     <div class="text-center">
@@ -102,17 +108,23 @@
                 </form>
             </li>
             <li>
-                <form class="form-horizontal" method="get" action="/cgi-bin/sx/mod.cgi">
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/I_mod.cgi">
                     <div class="form-group">
-                        <label for="stuId-mod" class="col-sm-2 control-label">学生学号</label>
+                        <label for="ino-mod" class="col-sm-2 control-label">学生学号</label>
                         <div class="col-sm-10">
-                            <input type="text" name="stuId" class="form-control" id="stuId-mod" placeholder="请输入学生学号">
+                            <input type="text" name="ino" class="form-control" id="ino-mod" placeholder="请输入学生学号">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="name-mod" class="col-sm-2 control-label">学生姓名</label>
+                        <label for="iname-mod" class="col-sm-2 control-label">学生姓名</label>
                         <div class="col-sm-10">
-                            <input type="text" name="name" class="form-control" id="name-mod" placeholder="请输入学生姓名">
+                            <input type="text" name="iname" class="form-control" id="iname-mod" placeholder="请输入学生姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sex-mod" class="col-sm-2 control-label">学生性别</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="sex" class="form-control" id="sex-mod" placeholder="请输入学生性别">
                         </div>
                     </div>
                     <div class="form-group">
@@ -122,9 +134,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="sex-mod" class="col-sm-2 control-label">学生性别</label>
+                        <label for="sid-mod" class="col-sm-2 control-label">学院编号</label>
                         <div class="col-sm-10">
-                            <input type="text" name="sex" class="form-control" id="sex-mod" placeholder="请输入学生性别">
+                            <input type="text" name="sid" class="form-control" id="sid-mod" placeholder="请输入学生所在学院编号">
                         </div>
                     </div>
                     <div class="text-center">
@@ -134,11 +146,11 @@
                 </form>
             </li>
             <li>
-                <form class="form-horizontal" method="get" action="/cgi-bin/sx/del.cgi">
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/I_del.cgi">
                     <div class="form-group">
-                        <label for="stuId-del" class="col-sm-2 control-label">输入要删除的学生Id</label>
+                        <label for="ino-del" class="col-sm-2 control-label">输入要删除的学生Id</label>
                         <div class="col-sm-10">
-                            <input type="text" name="stuId" class="form-control" id="stuId-del" placeholder="输入学生Id">
+                            <input type="text" name="ino" class="form-control" id="ino-del" placeholder="输入学生Id">
                         </div>
                     </div>
                     <div class="text-center">

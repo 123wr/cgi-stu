@@ -90,7 +90,7 @@ int cgiMain()
 		return -1;
 	}
 
-	strcpy(sql, "create table Information(ino int not null primary key, iname varchar(9) not null, sex char(4) not null, age int not null,sid int not null)");
+	strcpy(sql, "create table Information(ino int not null primary key, iname varchar(9) not null, sex char(4) not null, age int not null,sid int)");
 	if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
 	{
 		if (ret != 1)
@@ -101,7 +101,7 @@ int cgiMain()
 		}
 	}
 
-	sprintf(sql, "insert into stu values(%d, '%s', '%s', %d, %d)", atoi(ino), iname, sex, atoi(age), atoi(sid));
+	sprintf(sql, "insert into Information values(%d, '%s', '%s', %d, %d)", atoi(ino), iname, sex, atoi(age), atoi(sid));
 	if (mysql_real_query(db, sql, strlen(sql) + 1) != 0)
 	{
 		fprintf(cgiOut, "%s\n", mysql_error(db));

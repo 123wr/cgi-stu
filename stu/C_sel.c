@@ -10,23 +10,18 @@ int cgiMain()
 {
 
 	fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
-/*	fprintf(cgiOut, "<head><meta charset=\"utf-8\"/><title>查询结果</title>\
-			<style>table {width:400px; margin: 50px auto; border: 1px solid gray; border-collapse: collapse; border-spacing: none; text-align:center;}\
-			tr,td,th{border: 1px solid gray;}\
-			</style>\
-			</head>");*/
 
 	fprintf(cgiOut, "<head><meta charset=\"utf-8\"><title>查询结果</title>\
 		    <link rel=\"stylesheet\" href=\"/stu/public/css/bootstrap.min.css\">\
 		</head>");
 
-	char iname[9] = "\0";
+	char cname[9] = "\0";
 	int status = 0;
 
-	status = cgiFormString("iname",  iname, 9);
+	status = cgiFormString("cname",  cname, 9);
 	if (status != cgiFormSuccess)
 	{
-		fprintf(cgiOut, "get iname error!\n");
+		fprintf(cgiOut, "get cname error!\n");
 		return 1;
 	}
 
@@ -36,11 +31,11 @@ int cgiMain()
 
 	if (iname[0] == '*')
 	{
-		sprintf(sql, "select * from Information");
+		sprintf(sql, "select * from Course");
 	}
 	else
 	{
-		sprintf(sql, "select * from Information where iname = '%s'", iname);
+		sprintf(sql, "select * from Course where cname = '%s'", cname);
 	}
 
 
@@ -108,8 +103,6 @@ int cgiMain()
 		fprintf(cgiOut,"</tr>");
 	}
 	fprintf(cgiOut,"</table></div>");
-
-
 
 	mysql_close(db);
 	return 0;
