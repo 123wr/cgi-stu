@@ -42,6 +42,7 @@ int cgiMain()
 
 	//初始化
 	db = mysql_init(NULL);
+	mysql_options(db,MYSQL_SET_CHARSET_NAME,"utf8");
 	if (db == NULL)
 	{
 		fprintf(cgiOut,"mysql_init fail:%s\n", mysql_error(db));
@@ -57,7 +58,7 @@ int cgiMain()
 		return -1;
 	}
 
-	strcpy(sql, "create table Score(ino int(9), cno int(9), grade int(4), foreign key(ino) references Information(ino), foreign key(cno) references Course(cno),primary key(ino,cno))");
+	strcpy(sql, "create table Score(ino int(9), cno int(9), grade int(4), foreign key(ino) references Information(ino), foreign key(cno) references Course(cno),primary key(ino,cno))character set = utf8;");
 	if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
 	{
 		if (ret != 1)

@@ -10,18 +10,18 @@ char * footname = "footer.html";
 int cgiMain()
 {
 
-	FILE * fd;
+	//FILE * fd;
 
 	char ino[9] = "\0";
 	char iname[9] = "\0";
 	char sex[4] = "\0";
 	char age[4] = "\0";
 	char sid[9] = "\0";
-	char ch;
+//	char ch;
 	int status = 0;
 
   fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
-	if(!(fd = fopen(headname,"r"))){
+	/*if(!(fd = fopen(headname,"r"))){
 		fprintf(cgiOut,"Cannot open file, %s\n",headname);
 		return -1;
 	}
@@ -30,7 +30,7 @@ int cgiMain()
 	while(ch != EOF){
 		fprintf(cgiOut, "%c", ch);
 	}
-	fclose(fd);
+	fclose(fd);*/
 
 	status = cgiFormString("ino",  ino, 9);
 	if (status != cgiFormSuccess)
@@ -75,6 +75,7 @@ int cgiMain()
 
 	//初始化
 	db = mysql_init(NULL);
+	mysql_options(db,MYSQL_SET_CHARSET_NAME,"utf8");
 	if (db == NULL)
 	{
 		fprintf(cgiOut,"mysql_init fail:%s\n", mysql_error(db));
@@ -90,7 +91,7 @@ int cgiMain()
 		return -1;
 	}
 
-	strcpy(sql, "create table Information(ino int not null primary key, iname varchar(9) not null, sex char(4) not null, age int not null,sid int)");
+	strcpy(sql, "create table Information(ino int not null primary key, iname varchar(9) not null, sex char(4) not null, age int not null,sid int)character set = utf8;");
 	if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
 	{
 		if (ret != 1)

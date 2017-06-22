@@ -34,6 +34,7 @@ int cgiMain()
 
 	//初始化
 	db = mysql_init(NULL);
+	mysql_options(db,MYSQL_SET_CHARSET_NAME,"utf8");
 	if (db == NULL)
 	{
 		fprintf(cgiOut,"mysql_init fail:%s\n", mysql_error(db));
@@ -49,7 +50,7 @@ int cgiMain()
 		return -1;
 	}
 
-	strcpy(sql, "create table School(sid int(9) primary key, dept char(9) not null)");
+	strcpy(sql, "create table School(sid int(9) primary key, dept char(9) not null)character set = utf8;");
 	if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
 	{
 		if (ret != 1)
