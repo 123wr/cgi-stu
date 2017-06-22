@@ -10,18 +10,19 @@ char * footname = "footer.html";
 int cgiMain()
 {
 
-	//FILE * fd;
+	FILE * fd;
 
 	char ino[9] = "\0";
 	char iname[9] = "\0";
 	char sex[4] = "\0";
 	char age[4] = "\0";
 	char sid[9] = "\0";
-//	char ch;
 	int status = 0;
+  char ch;
+
 
   fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
-	/*if(!(fd = fopen(headname,"r"))){
+	if(!(fd = fopen(headname,"r"))){
 		fprintf(cgiOut,"Cannot open file, %s\n",headname);
 		return -1;
 	}
@@ -30,7 +31,7 @@ int cgiMain()
 	while(ch != EOF){
 		fprintf(cgiOut, "%c", ch);
 	}
-	fclose(fd);*/
+	fclose(fd);
 
 	status = cgiFormString("ino",  ino, 9);
 	if (status != cgiFormSuccess)
@@ -91,7 +92,7 @@ int cgiMain()
 		return -1;
 	}
 
-	strcpy(sql, "create table Information(ino int not null primary key, iname varchar(9) not null, sex char(4) not null, age int not null,sid int)character set = utf8;");
+	strcpy(sql, "create table Information(ino int(9) primary key, iname char(9) not null, sex char(4) check(sex in ('男','女')), age int(4), sid int(9),foreign key(sid) references School(sid), statu int(4) default 0)character set = utf8;");
 	if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
 	{
 		if (ret != 1)
@@ -102,7 +103,7 @@ int cgiMain()
 		}
 	}
 
-	sprintf(sql, "insert into Information values(%d, '%s', '%s', %d, %d)", atoi(ino), iname, sex, atoi(age), atoi(sid));
+	sprintf(sql, "insert into Information values(%d, '%s', '%s', %d, %d,'0')", atoi(ino), iname, sex, atoi(age), atoi(sid));
 	if (mysql_real_query(db, sql, strlen(sql) + 1) != 0)
 	{
 		fprintf(cgiOut, "%s\n", mysql_error(db));

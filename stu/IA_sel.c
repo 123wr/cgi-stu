@@ -36,11 +36,11 @@ int cgiMain()
 
 	if (ino[0] == '*')
 	{
-		sprintf(sql, "select * from Information where statu = '0' ");
+		sprintf(sql, "select * from Information ");
 	}
 	else
 	{
-		sprintf(sql, "select * from Information where ino = %d and statu = '0' ", atoi(ino));
+		sprintf(sql, "select * from Information where ino = %d ", atoi(ino));
 	}
 
 
